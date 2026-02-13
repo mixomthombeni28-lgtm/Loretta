@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Your Eyes Only ❤️</title>
+    <style>
+        body{
+            background:black;
+            color:white;
+            text-align:center;
+            font-family:Arial;
+            margin-top:150px;
+        }
+        input{
+            padding:10px;
+            font-size:18px;
+            border-radius:8px;
+            border:none;
+        }
+        button{
+            padding:10px 20px;
+            font-size:18px;
+            background:red;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>This website is only for my girlfriend ❤️</h1>
+<p>Enter our anniversary date (DDMMYYYY)</p>
+
+<input type="password" id="password">
+<br><br>
+<button onclick="checkPassword()">Enter</button>
+
+<p id="wrong"></p>
+
+<script>
+function checkPassword(){
+    var pass = document.getElementById("password").value;
+
+    if(pass === "15092021"){   // ← CHANGE THIS TO YOUR DATE
+        window.location.href = "main.html";
+    } else{
+        document.getElementById("wrong").innerHTML = "Wrong date 😢 Try again";
+    }
+}
+</script>
+
+</body>
+</html>
+

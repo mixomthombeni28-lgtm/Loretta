@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Valentine's Day ❤️</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="hearts"></div>
+
+<!-- HEART NAME CANVAS -->
+<canvas id="heartCanvas"></canvas>
+
+<div class="container">
+
+<h1 id="typing"></h1>
+
+<p class="letter" id="loveLetter"></p>
+
+<!-- PHOTO GALLERY -->
+<div class="gallery">
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+    <img src="photo3.jpg">
+    <img src="photo5.jpg">
+</div>
+
+<h2 id="countdown"></h2>
+
+<button onclick="openPopup()">Click Here ❤️</button>
+
+</div>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+    <div class="popup-box">
+        <h2>Will you be my Valentine? ❤️</h2>
+        <button onclick="yesAnswer()">YES 💖</button>
+        <button id="noBtn">NO 😢</button>
+    </div>
+</div>
+
+<audio id="mainMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+
+<script src="script.js"></script>
+<!-- VIDEO SECTION -->
+<div id="videoSection" class="video-section">
+    <h1>Thank you for choosing me ❤️</h1>
+
+    <video id="player" controls muted></video>
+
+    <p id="videoMessage"></p>
+
+    <audio id="finalMusic">
+        <source src="finalsong.mp3" type="audio/mpeg">
+    </audio>
+</div>
+<div id="finalMessage" class="final-message">
+    <h1>To My One and Only ❤️</h1>
+    <h2>Being with you makes my life magical 💖</h2>
+    <h2>Thank you for being my everything ✨</h2>
+</div>
+
+
+</body>
+</html>
+
