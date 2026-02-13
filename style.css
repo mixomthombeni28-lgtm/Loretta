@@ -105,8 +105,9 @@ button{
 }
 
 .video-section video{
-    width:90%;
+    width:95%;
     max-width:700px;
+    height:auto;
     border-radius:15px;
     margin:20px auto;
     display:block;
@@ -122,5 +123,6 @@ button{
     color: pink !important;
     opacity: 0.8;
 }
+
 
 
