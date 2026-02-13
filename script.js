@@ -1,9 +1,8 @@
-// Play background music when user clicks first button
+// Play background music after user interaction
 const mainMusic = document.getElementById("mainMusic");
 
 function openPopup(){
     document.getElementById("popup").style.display="block";
-    // play main music after user interaction
     mainMusic.play().catch(()=>console.log("Autoplay blocked"));
 }
 
@@ -39,70 +38,61 @@ function typeLetter(){
 }
 setTimeout(typeLetter,2000);
 
-// POPUP
-function openPopup(){
-    document.getElementById("popup").style.display="block";
-}
+// POPUP & YES BUTTON
 function yesAnswer(){
+    // Stop main music
+    mainMusic.pause();
+    mainMusic.currentTime = 0;
 
-    // hide the main page
-    document.querySelector("audio").pause();
-
+    // Hide main page
     document.querySelector(".container").style.display="none";
     document.querySelector(".hearts").style.display="none";
     document.getElementById("popup").style.display="none";
 
-    // show video section
+    // Show video section
     const section=document.getElementById("videoSection");
     section.style.display="block";
 
-    // play music
+    // Play final song
     const music=document.getElementById("finalMusic");
-    music.play();
+    music.play().catch(()=>console.log("Autoplay blocked"));
 
-    // playlist
+    // Only one video
     const videos=[
-        {src:"video1.mp4",msg:"Every moment with you is my favorite memory ❤️"},
-    
+        {src:"video1.mp4",msg:"Every moment with you is my favorite memory ❤️"}
     ];
 
     let index=0;
     const player=document.getElementById("player");
     const text=document.getElementById("videoMessage");
+    player.preload = "auto";
 
     function playVideo(i){
-        player.src=videos[i].src;
-        text.innerHTML=videos[i].msg;
+        player.src = videos[i].src;
+        text.innerHTML = videos[i].msg;
         player.muted = true;
         player.play();
     }
 
     playVideo(index);
 
-
     player.onended = function(){
-    index++;
-    if(index < videos.length){
-        playVideo(index);
-    } else {
         // Hide video player and text
         player.style.display = "none";
         text.style.display = "none";
 
-        // Show final message
+        // Show final message container
         const fm = document.getElementById("finalMessage");
         fm.style.display = "block";
         setTimeout(()=>{ fm.classList.add("show"); }, 100);
 
-        // Keep falling hearts visible and increase density
-        const heartsInterval = setInterval(()=>{
-            createHeart();
-        }, 150); // faster hearts
-    }
-};
-
+        // Start typing final message
+        typeFinalMessage();
+        
+        // Keep hearts floating
+        setInterval(createHeart,150);
+    };
 }
-
 
 // RUNAWAY BUTTON
 const noBtn=document.getElementById("noBtn");
@@ -114,7 +104,7 @@ document.addEventListener("mousemove",()=>{
     }
 });
 
-// COUNTDOWN (change date!)
+// COUNTDOWN
 const target=new Date("Feb 14, 2026 00:00:00").getTime();
 setInterval(()=>{
     const now=new Date().getTime();
@@ -128,11 +118,11 @@ setInterval(()=>{
 function createHeart(){
     const heart=document.createElement("span");
     heart.innerHTML="❤️";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.fontSize=(Math.random()*20+10)+"px";
-    heart.style.animationDuration=(Math.random()*5+5)+"s";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*30+15) + "px";
+    heart.style.animationDuration = (Math.random()*7+5) + "s";
     document.querySelector(".hearts").appendChild(heart);
-    setTimeout(()=>heart.remove(),10000);
+    setTimeout(()=>heart.remove(),12000);
 }
 setInterval(createHeart,300);
 
@@ -160,4 +150,34 @@ function drawHeart(t){
 }
 drawHeart();
 
+// FINAL MESSAGE TYPING
+const finalTitleText = "To My One and Only ❤️";
+const finalText = "Being with you makes my life magical 💖\nThank you for being my everything ✨ \n I Love you Loretta";
 
+function typeFinalMessage(){
+    let k=0, l=0;
+    const titleEl = document.getElementById("finalTitle");
+    const textEl = document.getElementById("finalText");
+
+    function typeTitleChar(){
+        if(k < finalTitleText.length){
+            titleEl.innerHTML += finalTitleText.charAt(k);
+            k++;
+            setTimeout(typeTitleChar,80);
+        } else {
+            typeTextChar();
+        }
+    }
+
+    function typeTextChar(){
+        if(l < finalText.length){
+            let char = finalText.charAt(l);
+            if(char === "\n") char = "<br>";
+            textEl.innerHTML += char;
+            l++;
+            setTimeout(typeTextChar,35);
+        }
+    }
+
+    typeTitleChar();
+}
