@@ -1,0 +1,126 @@
+body{
+    margin:0;
+    background:linear-gradient(#181717,#ff7eb3);
+    font-family:Arial;
+    text-align:center;
+    color:white;
+    overflow-x:hidden;
+}
+
+.container{
+    margin-top:80px;
+}
+
+.photo{
+    width:280px;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(0,0,0,0.4);
+}
+
+button{
+    padding:15px 25px;
+    font-size:18px;
+    background:red;
+    border:none;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+}
+
+.popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.6);
+}
+
+.popup-box{
+    background:white;
+    color:black;
+    padding:30px;
+    border-radius:15px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+
+/* HEARTS */
+.hearts span{
+    position:fixed;
+    bottom:-50px;
+    color:red;
+    font-size:24px;
+    animation:float 10s linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-110vh);}
+}
+/* TYPING TITLE */
+#typing{
+    font-size:42px;
+    margin-top:40px;
+}
+
+/* GALLERY */
+.gallery{
+    display:flex;
+    overflow-x:auto;
+    gap:20px;
+    padding:20px;
+    justify-content:center;
+}
+
+.gallery img{
+    width:200px;
+    border-radius:15px;
+    box-shadow:0 0 15px rgba(0,0,0,0.4);
+}
+
+/* HEART CANVAS */
+#heartCanvas{
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:-1;
+}
+/* VIDEO SECTION FIXED */
+.video-section{
+    display:none;
+    position:relative;  /* was fixed before, now relative so it scrolls */
+    width:100%;
+    min-height:100vh;
+    background:black;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+    overflow-y:auto;  /* allows scrolling if content is taller than screen */
+    box-sizing:border-box;
+    z-index:999;
+}
+
+.video-section video{
+    width:90%;
+    max-width:700px;
+    border-radius:15px;
+    margin:20px auto;
+    display:block;
+}
+/* Ensure hearts are visible on top of final message */
+.final-message + .hearts{
+    z-index: 1100;  /* above everything */
+}
+
+/* Optional: make the hearts smaller and more romantic */
+.hearts span{
+    font-size: 20px !important;
+    color: pink !important;
+    opacity: 0.8;
+}
+
+
