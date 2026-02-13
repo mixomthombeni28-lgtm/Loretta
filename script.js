@@ -112,9 +112,6 @@ function createHeart(){
 }
 
 
-}
-
-
 // RUNAWAY BUTTON
 const noBtn=document.getElementById("noBtn");
 document.addEventListener("mousemove",()=>{
@@ -159,6 +156,7 @@ function drawHeart(t){
     ctx.fillText("LORETTA",canvas.width/2-90,canvas.height/2+10);
 }
 drawHeart();
+
 
 
 
